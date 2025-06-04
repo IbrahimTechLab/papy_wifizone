@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Connexion Réussie - Papy Wifizone</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background: linear-gradient(to bottom right, #e6f0ff, #ffffff);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #34a853;
+            margin-bottom: 1rem;
+        }
+
+        .info {
+            margin: 1rem 0;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .info strong {
+            color: #1a73e8;
+        }
+
+        .footer {
+            margin-top: 1.5rem;
+            font-size: 14px;
+            color: #777;
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bienvenue, {{ user }} 👋</h1>
+
+        <div class="info">
+            <h2>Connexion réussie ✅</h2>
+            <p><strong>Code utilisé :</strong> {{ code }}</p>
+            <p><strong>Temps restant :</strong> {{ remaining_time }} minutes</p>
+            <p><strong>Vitesse :</strong> {{ speed_mbps }} Mbps</p>
+            <p><strong>Données utilisées :</strong> {{ used_gb }} Go</p>
+            <p><strong>Données restantes :</strong> {{ data_remaining }} Go (sur {{ data_limit }} Go)</p>
+        </div>
+
+        <p>Profitez bien de votre connexion Wi-Fi avec <strong>Papy Wifizone</strong> !</p>
+
+        <div class="footer">
+            Connecté via Starlink • © 2025 Ibrahim & Karim
+        </div>
+    </div>
+</body>
+</html>

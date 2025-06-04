@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Papy Wifizone - Admin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: "Segoe UI", sans-serif;
+            background: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 25px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border-bottom: 1px solid #ccc;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .form-section {
+            max-width: 500px;
+            margin: 30px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+
+        .form-section input, .form-section button {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            font-size: 16px;
+        }
+
+        .form-section button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .form-section button:hover {
+            background-color: #0056b3;
+        }
+
+        .status-used {
+            color: #ff5722;
+            font-weight: bold;
+        }
+
+        .status-active {
+            color: #4caf50;
+            font-weight: bold;
+        }
+
+        @media (max-width: 600px) {
+            table, thead, tbody, th, td, tr {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>🛠️ Papy Wifizone - Admin</h1>
+
+    <div class="form-section">
+        <form method="POST" action="/admin">
+            <label>Nombre de codes à générer</label>
+            <input type="number" name="n" min="1" max="50" required>
+
+            <label>Durée (minutes)</label>
+            <input type="number" name="duration" value="60" required>
+
+            <label>Data (Go)</label>
+            <input type="number" name="data_limit" value="1" step="0.1" required>
+
+            <button type="submit">Générer les codes</button>
+        </form>
+    </div>
+
+    {% if codes %}
+    <table>
+        <thead>
+            <tr>
+                <th>Code</th>
+                <th>Durée</th>
+                <th>Data (Go)</th>
+                <th>Statut</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for code, data in codes.items() %}
+            <tr>
+                <td>{{ code }}</td>
+                <td>{{ data.duration }} min</td>
+                <td>{{ data.data_limit }}</td>
+                <td>
+                    {% if data.get("expired") %}
+                        <span class="status-used">Expiré</span>
+                    {% elif data.get("used") %}
+                        <span class="status-used">Utilisé</span>
+                    {% else %}
+                        <span class="status-active">Actif</span>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <p style="text-align:center; color:#999;">Aucun code enregistré.</p>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,37 @@
+{
+    "ZFB2NG": {
+        "used": true,
+        "duration": 60,
+        "data_limit": 1.0,
+        "start_time": "2025-06-04T16:12:10.655102"
+    },
+    "OW5UMN": {
+        "used": true,
+        "duration": 60,
+        "data_limit": 1.0,
+        "start_time": "2025-06-04T16:15:59.485132"
+    },
+    "2U98JP": {
+        "used": true,
+        "duration": 60,
+        "data_limit": 1.0,
+        "start_time": "2025-06-04T18:12:46.014141",
+        "used_gb": 0,
+        "speed_mbps": 10
+    },
+    "5TD27H": {
+        "used": false,
+        "duration": 60,
+        "data_limit": 1.0
+    },
+    "10WFNG": {
+        "used": false,
+        "duration": 60,
+        "data_limit": 1.0
+    },
+    "JU4LGS": {
+        "used": false,
+        "duration": 60,
+        "data_limit": 1.0
+    }
+}
